@@ -20,8 +20,11 @@ class Recipe
     end
     
     def print_details
-        puts self.id
-        puts "Title: #{self.title}"
-        puts "Image: #{self.image}"
+        puts "Id: #{self.id}, Title: #{self.title}, Image: #{self.image}"
+    end
+
+    def self.print_more_details(detail_hash)
+        all_ingredients = detail_hash['extendedIngredients'].map { |i| i['name'] }.join(', ')
+        puts "Vegetarian: #{detail_hash['vegetarian']}. All Ingredients: #{all_ingredients}. Summary: #{detail_hash['summary']}"
     end
 end
