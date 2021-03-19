@@ -1,28 +1,8 @@
-require 'pry'
-require 'open-uri'
-require 'net/http'
-require 'json'
+# require 'pry'
+# require 'open-uri'
+# require 'net/http'
+# require 'json'
 
-# url =  'https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=10&apiKey=d4e53c6445044db48e3dc014af376cc9'
+ require_relative 'config/environment.rb'
 
-
-# uri = URI.parse(url)
-# response = Net::HTTP.get(uri)
-# json = JSON.parse(response)
-# puts json
-
-#  recipe_url = 'https://api.spoonacular.com/recipes/47950/information?apiKey=d4e53c6445044db48e3dc014af376cc9'
-# recipe_uri = URI.parse(recipe_url)
-# response = Net::HTTP.get(recipe_uri)
-# json = JSON.parse(response)
-# puts json
-
-
-# json["extendedIngredients"].map {|i| i["name"]}
-# binding.pry
-
-puts"welcome to find recipe"
-puts "please enter ingredients you want to search for recipes"
-ingredients = gets.chomp
-
-
+ binding.pry
