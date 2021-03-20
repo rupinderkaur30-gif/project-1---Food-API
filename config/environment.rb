@@ -9,7 +9,7 @@ require_relative "../models/cli.rb"
 require_relative "../models/user.rb"
 require_relative "../models/recipe.rb"
 require_relative "../models/spoonacular_api.rb"
-require_relative "../models/search_ingredients.rb"
+
 
 
 # "puts"welcome to find recipe"

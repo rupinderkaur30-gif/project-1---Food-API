@@ -69,6 +69,6 @@ def menu
   end
   
   def exit_app
-    puts "Thanks for helping our Breaking Bad Besties get Back on their Feet"
+    puts "Thanks for searching recipes"
   end
 end
