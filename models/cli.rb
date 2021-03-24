@@ -17,12 +17,16 @@ end
 
 def menu
     if @user
-      input = @prompt.enum_select("What would you like to do, #{@user.username}?", ["see recipe", "Find Recipe by Ingredient", "Logout", "Exit"])
+      input = @prompt.enum_select("What would you like to do, #{@user.username}?", ["see recipe", "Find Recipe by Ingredient", "Get Recipe with Instruction","Find similar Recipe by Id",  "Logout", "Exit"])
       case input
       when "see recipe"
        see_recipe
       when "Find Recipe by Ingredient"
         find_recipe_by_ingredients
+      when "Get Recipe with Instruction"
+        get_recipe_with_instruction
+      when "Find similar Recipe by Id"
+        find_similar_recipe_by_id
       when "Logout"
         logout
       when "Exit"
@@ -41,7 +45,6 @@ def menu
     response.each do |recipe|
         recipe_hash = SpoonacularApi.get_recipe(recipe['id'])
         Recipe.print_more_details(recipe_hash)
-    
     end
   end
 
@@ -56,6 +59,26 @@ def menu
     Recipe.print_more_details(recipe_hash)
     menu
   end
+
+  def get_recipe_with_instruction
+    puts "please enter the id of the recipe to get instruction for the recipe"
+    id = gets.chomp.to_i
+    recipe_steps = SpoonacularApi.get_recipe_with_instruction(id)
+    recipe_hash = SpoonacularApi.get_recipe(id)
+    puts recipe_hash["title"]
+    Recipe.print_instruction_details(recipe_steps)
+    menu
+  end
+
+  def find_similar_recipe_by_id
+    puts "please enter the id of the recipe to get similar recipe"
+    id = gets.chomp.to_i
+    similar_recipes_array = SpoonacularApi.find_similar_recipe_by_id(id)
+  
+      Recipe.print_similar_recipes(similar_recipes_array)
+      menu
+  end
+
 
   
   def prompt_login

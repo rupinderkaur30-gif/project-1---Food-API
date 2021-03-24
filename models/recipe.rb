@@ -16,6 +16,7 @@ class Recipe
     end
     
     def self.find_by_title(title)
+        binding.pry
         self.all.find{|recipe| recipe.title == title}
     end
     
@@ -24,7 +25,19 @@ class Recipe
     end
 
     def self.print_more_details(detail_hash)
+        binding.pry
         all_ingredients = detail_hash['extendedIngredients'].map { |i| i['name'] }.join(', ')
         puts "Vegetarian: #{detail_hash['vegetarian']}. All Ingredients: #{all_ingredients}. Summary: #{detail_hash['summary']}"
+
     end
+
+    def self.print_instruction_details(steps_array)
+        steps_array.each_with_index {|step_hash, index| puts "#{index+1}. #{step_hash['step']}"}
+    end
+
+    def self.print_similar_recipes(similar_recipe_array)
+        similar_recipe_array.each {|similar_recipe_array| puts "#{similar_recipe_array['title']}, #{similar_recipe_array['sourceUrl']}"} 
+    end
+
+
 end
