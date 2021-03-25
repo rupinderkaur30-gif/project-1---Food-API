@@ -57,6 +57,7 @@ def menu
     puts "please enter the id of the recipe to get more info"
     id = gets.chomp.to_i
     recipe_hash = SpoonacularApi.get_recipe(id)
+    puts "Recipe_name: #{recipe_hash["title"]}"
     Recipe.print_more_details(recipe_hash)
     menu
   end
@@ -75,9 +76,9 @@ def menu
     puts "please enter the id of the recipe to get similar recipe"
     id = gets.chomp.to_i
     similar_recipes_array = SpoonacularApi.find_similar_recipe_by_id(id)
-  
-      Recipe.print_similar_recipes(similar_recipes_array)
-      menu
+    puts recipe_hash["title"]
+    Recipe.print_similar_recipes(similar_recipes_array)
+    menu
   end
 
 
