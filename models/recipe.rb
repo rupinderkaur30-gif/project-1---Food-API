@@ -25,7 +25,6 @@ class Recipe
     end
 
     def self.print_more_details(detail_hash)
-        binding.pry
         all_ingredients = detail_hash['extendedIngredients'].map { |i| i['name'] }.join(', ')
         puts "Vegetarian: #{detail_hash['vegetarian']}. All Ingredients: #{all_ingredients}. Summary: #{detail_hash['summary']}"
 

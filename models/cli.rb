@@ -46,6 +46,7 @@ def menu
         recipe_hash = SpoonacularApi.get_recipe(recipe['id'])
         Recipe.print_more_details(recipe_hash)
     end
+    menu
   end
 
   def see_recipe
