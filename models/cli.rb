@@ -12,14 +12,14 @@ def set_recipes
 end
 
 def welcome
-    puts "welcome to find recipe"
+    puts "...........Welcome to Find Recipe............."
 end
 
 def menu
     if @user
-      input = @prompt.enum_select("What would you like to do, #{@user.username}?", ["see recipe", "Find Recipe by Ingredient", "Get Recipe with Instruction","Find similar Recipe by Id",  "Logout", "Exit"])
+      input = @prompt.select("What would you like to do, #{@user.username}?", ["See Recipe", "Find Recipe by Ingredient", "Get Recipe with Instruction","Find similar Recipe by Id",  "Logout", "Exit"])
       case input
-      when "see recipe"
+      when "See Recipe"
        see_recipe
       when "Find Recipe by Ingredient"
         find_recipe_by_ingredients
