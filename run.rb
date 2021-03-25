@@ -1,7 +1,7 @@
-# require 'pry'
-# require 'open-uri'
-# require 'net/http'
-# require 'json'
+require 'dotenv/load'
+
+puts ENV["API_key"]
+
 
  require_relative 'config/environment.rb'
 
