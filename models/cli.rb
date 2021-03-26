@@ -17,7 +17,8 @@ end
 
 def menu
     if @user
-      input = @prompt.select("What would you like to do, #{@user.username}?", ["See Recipe", "Find Recipe by Ingredient", "Get Recipe with Instruction","Find similar Recipe by Id",  "Logout", "Exit"])
+      input = @prompt.select("What would you like to do, #{@user.username}?", ["See Recipe", "Find Recipe by Ingredient", "Get Recipe with Instruction","Find similar Recipe by Id" , 
+        "Logout", "Exit"])
       case input
       when "See Recipe"
        see_recipe
@@ -27,6 +28,8 @@ def menu
         get_recipe_with_instruction
       when "Find similar Recipe by Id"
         find_similar_recipe_by_id
+      when "Find Recipe by Nutrients"
+        find_recipe_by_nutrients
       when "Logout"
         logout
       when "Exit"
@@ -43,8 +46,11 @@ def menu
     ingredients = gets.chomp
     response = SpoonacularApi.search_recipes_by_ingredients(ingredients)
     response.each do |recipe|
-        recipe_hash = SpoonacularApi.get_recipe(recipe['id'])
-        Recipe.print_more_details(recipe_hash)
+    recipe_hash = SpoonacularApi.get_recipe(recipe['id'])
+    id = gets.chomp.to_i
+    puts "........."
+    puts "Recipe_name: #{recipe_hash["title"]}"
+    Recipe.print_more_details(recipe_hash)
     end
     menu
   end
@@ -67,7 +73,7 @@ def menu
     id = gets.chomp.to_i
     recipe_steps = SpoonacularApi.get_recipe_with_instruction(id)
     recipe_hash = SpoonacularApi.get_recipe(id)
-    puts recipe_hash["title"]
+    puts "Recipe_name: #{recipe_hash["title"]}"
     Recipe.print_instruction_details(recipe_steps)
     menu
   end
@@ -76,13 +82,12 @@ def menu
     puts "please enter the id of the recipe to get similar recipe"
     id = gets.chomp.to_i
     similar_recipes_array = SpoonacularApi.find_similar_recipe_by_id(id)
-    puts recipe_hash["title"]
+    recipe_hash = SpoonacularApi.get_recipe(id)
+    puts "Recipe_name: #{recipe_hash["title"]}"
     Recipe.print_similar_recipes(similar_recipes_array)
     menu
   end
-
-
-  
+    
   def prompt_login
     username = @prompt.ask("What's your username?")
     @user = User.find_or_create(username)

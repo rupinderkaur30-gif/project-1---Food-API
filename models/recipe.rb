@@ -25,7 +25,7 @@ class Recipe
     end
 
     def self.print_more_details(detail_hash)
-        all_ingredients = detail_hash['extendedIngredients'].map { |i| i['name'] }.join(', ')
+        all_ingredients = detail_hash['extendedIngredients'].map {|i| i['name'] }.join(', ') 
         puts "Vegetarian: #{detail_hash['vegetarian']}"
         puts  "All Ingredients: #{all_ingredients}"
         puts  "Summary: #{detail_hash['summary']}"
@@ -33,11 +33,11 @@ class Recipe
     end
 
     def self.print_instruction_details(steps_array)
-        steps_array.each_with_index {|step_hash, index| puts "#{index+1}. #{step_hash['step']}"}
+        steps_array.each_with_index {|step_hash, index| puts  "#{index+1}. #{step_hash['step']}"}
     end
 
     def self.print_similar_recipes(similar_recipe_array)
-        similar_recipe_array.each {|similar_recipe_array| puts "#{similar_recipe_array['title']}, #{similar_recipe_array['sourceUrl']}"} 
+        similar_recipe_array.each  {|similar_recipe_array| puts "Similar_recipe: #{similar_recipe_array['title']}", "Similar_recipe_url:#{similar_recipe_array['sourceUrl']}"} 
     end
 
 
