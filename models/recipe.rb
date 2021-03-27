@@ -33,7 +33,7 @@ class Recipe
     end
 
     def self.print_instruction_details(steps_array)
-        steps_array.each_with_index {|step_hash, index| puts  "#{index+1}. #{step_hash['step']}"}
+        steps_array.each_with_index {|step_hash, index| puts  "Step #{index+1}. #{step_hash['step']}"}
     end
 
     def self.print_similar_recipes(similar_recipe_array)

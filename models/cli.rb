@@ -50,6 +50,8 @@ def menu
     id = gets.chomp.to_i
     puts "........."
     puts "Recipe_name: #{recipe_hash["title"]}"
+    puts "Ready_in_minutes: #{recipe_hash["readyInMinutes"]}"
+    puts "Servings: #{recipe_hash["servings"]}"
     Recipe.print_more_details(recipe_hash)
     end
     menu
@@ -64,6 +66,8 @@ def menu
     id = gets.chomp.to_i
     recipe_hash = SpoonacularApi.get_recipe(id)
     puts "Recipe_name: #{recipe_hash["title"]}"
+    puts "Ready_in_minutes: #{recipe_hash["readyInMinutes"]}"
+    puts "Servings: #{recipe_hash["servings"]}"
     Recipe.print_more_details(recipe_hash)
     menu
   end
